@@ -22,13 +22,13 @@ def hello():
     username = request.form['username']
     password = request.form['password']
     if username in model.session.query(model.User).all():
-        result = True
+        # result = True
         return render_template("loggedin.html")
     else:
         new_user = model.User(username='username', password='password')
         model.session.add(new_user)
         model.session.commit()
-        result = False
+        # result = False
         return render_template("newuser.html")
 
 
