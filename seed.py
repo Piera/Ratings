@@ -58,6 +58,7 @@ def load_ratings(session):
 
 def main(session):
     # objectUsers,objectRatings,objectMovies = open(sys.argv[3])
+    model.create_tables()
     load_users(session)
     load_movies(session)
     load_ratings(session)

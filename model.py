@@ -6,13 +6,14 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship, backref
 
 ENGINE = None
-session = None
+Session = None
 
 ENGINE = create_engine("sqlite:///ratings.db", echo = False)
-session = scoped_session(sessionmaker(bind=ENGINE, autocommit = False, autoflush = False))
+session = scoped_session(sessionmaker(bind=ENGINE, autocommit = False, autoflush = False)) 
 
 Base = declarative_base()
-Base.query = session.query_property()
+# Base.metadata.create_all()
+
 
 class User(Base):
     __tablename__ = "users"
@@ -22,6 +23,8 @@ class User(Base):
     gender = Column(String(30), nullable = True)
     occupation = Column(String(20), nullable = True)
     zipcode = Column(String(15), nullable = True)
+    username = Column(String(50), nullable = True)
+    password = Column(String(50), nullable = True)
 
 ### Class declarations go here
 
@@ -41,6 +44,21 @@ class Rating(Base):
     rating = Column(Integer, nullable = False)
 
     user = relationship("User", backref=backref("ratings", order_by=id))
+
+def create_tables():
+    global ENGINE
+    Base.metadata.create_all(ENGINE)
+
+
+# def connect():
+#     global ENGINE
+#     global Session
+
+#     ENGINE = create_engine("sqlite:///ratings.db", echo=True)
+#     Session = sessionmaker(bind=ENGINE)
+#     # Base.metadata.create_all()
+
+#     return Session()
 
 def main():
     """In case we need this for something"""
