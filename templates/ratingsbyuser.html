@@ -2,23 +2,24 @@
 <html>
     
     <head>
-    <title> Movie Ratings by User </title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}"> 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
-    </script>
-    <script src ="{{ url_for('static', filename='ratings_app.js') }}"></script>
 
-
-
+        <title> Movie Ratings </title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}"> 
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+        </script>
+        <script src ="{{ url_for('static', filename='ratings_app.js') }}"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+        
     </head>
+        
         <body>
+
             <h2>User {{ user.id }}, age {{ user.age }} has rated the following movies: 
             {% for user_rating in user.ratings %}
-            <h2>&nbsp;&nbsp;Movie: {{ user_rating.movie.name }}, Rating: {{ user_rating.rating }}</h2>
+            <h3>&nbsp;&nbsp;Movie: {{ user_rating.movie.name }}, Rating: {{ user_rating.rating }}</h3>
             {% endfor %}
         
         </body>
-
 
 
 </html>
