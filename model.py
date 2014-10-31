@@ -73,12 +73,12 @@ class Movie(Base):
 class Rating(Base):
     __tablename__ = "ratings"
     id = Column(Integer, primary_key = True)
-    movie_id = Column(Integer, nullable = False)
+    movie_id = Column(Integer, ForeignKey('movies.id'))
     user_id = Column(Integer, ForeignKey('users.id'))
     rating = Column(Integer, nullable = False)
 
     user = relationship("User", backref=backref("ratings", order_by=id))
-    # movie = relationship("Movie", backref=backref("ratings", order_by=id))
+    movie = relationship("Movie", backref=backref("ratings", order_by=id))
 
 def create_tables():
     global ENGINE

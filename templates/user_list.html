@@ -20,10 +20,12 @@
 
             </form>
 
-
+            <h2>Here is a sample of our movie rating data:<br/></h2>
             {% for user in users %}
-            <h2>User {{ user.id }}, age {{ user.age }} has {{ user.ratings|length }} ratings</h2>
+            <h2>&nbsp;&nbsp;<a href="/user/{{ user.id }}">User {{ user.id }}</a>, age {{ user.age }} has {{ user.ratings|length }} ratings</h2>
             {% endfor %}
+
+            <h2>&nbsp;&nbsp;<a href="{{ url_for('allusers') }}">Click here to see a list of all users</a></h2>
         
         </body>
 

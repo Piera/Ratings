@@ -9,14 +9,6 @@ def index():
     user_list = model.session.query(model.User).limit(5).all()
     return render_template("user_list.html", users=user_list)
 
-# @app.route('/api/judgment/user_login')
-
-    # Put routes here to handle username and password coming in from the form
-    # We can create another file to handle the function definitions if we want to!
-    # When we write the login function, we need to return true/false.
-
-
-
 @app.route('/hello', methods = ['POST'])
 def hello():
     username = request.form['username']
@@ -31,26 +23,16 @@ def hello():
         # result = False
         return render_template("newuser.html")
 
+@app.route('/user/<int:user_id>')
+def user_ratings(user_id):
+    user = model.session.query(model.User).filter_by(id=user_id).one()
+    # rating_list = model.session.query(model.Rating).filter_by(user_id=user_id).all()
+    return render_template("ratingsbyuser.html", user = user)
 
-
-
-
-
-
-
-
-
-
-
-    # result = check_DB_for_user()
-    # return _convert_to_JSON(result)
-
+@app.route('/allusers')
+def allusers():
+    user_list = model.session.query(model.User).all()
+    return render_template("allusers.html", users=user_list)
 
 if __name__=='__main__':
     app.run(debug = True)
-
-
-# def _convert_to_JSON(result):
-#     response = make_response(json.dumps(result))
-#     response.headers['Access-Control-Allow-Origin'] = "*"
-#     response.mimtype = "application/json"
