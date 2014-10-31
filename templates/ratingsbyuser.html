@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+    <title> Movie Ratings by User </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}"> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+    </script>
+    <script src ="{{ url_for('static', filename='ratings_app.js') }}"></script>
+
+
+
+    </head>
+        <body>
+            <h2>User {{ user.id }}, age {{ user.age }} has rated the following movies: 
+            {% for user_rating in user.ratings %}
+            <h2>&nbsp;&nbsp;Movie: {{ user_rating.movie.name }}, Rating: {{ user_rating.rating }}</h2>
+            {% endfor %}
+        
+        </body>
+
+
+
+</html>
