@@ -1,27 +1,28 @@
-$(document).ready(function()
-    {
+// $(document).ready(function()
+//     {
     
-    $("#login").submit(userLogin);
-    });
+//     $("#login").submit(userLogin);
+//     });
 
     
-    function userLogin(username, password){
-        $.post('hello',
-            {'user_info': (username, password)},
-                function (result)
-                    console.log(result);
+//     function userLogin(username, password){
+//         $.post('/login',
+//             {'user_info': (username, password)},
+//                 function (result)
+//                     console.log(result);
 
-                }
-            // {We will need to get some true/false value from the call back.}
-            );
+//                 }
+//             // {We will need to get some true/false value from the call back.}
+//             );
    
 
-            alert("wth");
+//             alert("wth");
 
-    }
+//     }
 
-    function confirm(e){
-        e.preventDefault();
-        alert("Im working");
-    }
+//     function confirm(e){
+//         e.preventDefault();
+//         alert("Im working");
+//     }
+
 
